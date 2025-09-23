@@ -8,6 +8,7 @@ import morgan from 'morgan';
 import 'dotenv/config';
 import { dbConnection } from './db.js'
 import 'dotenv/config';
+import userModel from '../src/users/user.model.js'
 
 const middlewares = (app)=>{
     app.use(express.json());
@@ -29,7 +30,7 @@ export const initServer = async ()=> {
     const app = express();
 
     try{
-middlewares(app)
+        middlewares(app)
         await conectarDB();
         app.listen(process.env.PORT,()=>{
             console.log(`Servidor corriendoen el puerto ${process.env.PORT} `)
